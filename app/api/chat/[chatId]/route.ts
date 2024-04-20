@@ -134,6 +134,7 @@ export async function POST(
     const mindKey = {
       mindName: name!,
       userId: user.id,
+      // TODO: check this
       modelName: "gemini",
     };
     const memoryManager = await MemoryManager.getInstance();
@@ -146,7 +147,7 @@ export async function POST(
 
     const recentChatHistory = await memoryManager.readLatestHistory(mindKey);
 
-    // TODO: add demo conversation here
+    // TODO: check memory.ts
     let relevantHistory = "";
 
     if (type == "image") {
