@@ -207,11 +207,7 @@ export async function POST(
       const botPrompt =
         `ONLY generate plain sentences without prefix of who is speaking. 
         DO NOT use "${mind.name}:" prefix. 
-        DO NOT use "${mind.name}:" prefix. 
-        DO NOT use "${mind.name}:" prefix. 
         ${mind.instructions}
-        Please answer like a real celebraties you're acting. 
-        If you could, use emojis like *smile* to express emotions.
         If you could, use emojis like *smile* to express emotions.
         Below are relevant details about ${mind.name}'s past and the conversation you are in. 
         ${relevantHistory}
@@ -220,22 +216,32 @@ export async function POST(
       console.log('bot prompt', botPrompt)
 
       let response = "";
-      if (isPro) {
-        const googleGenAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY || "");
+      try {
+        // Mancer API
+        const data = {
+          messages: [
+            {
+              role: "user",
+              content: prompt,
+            }
+          ],
+          "model": "mythomist"
+        }
 
-        const model = googleGenAI.getGenerativeModel({ model: "gemini-pro" });
-        const result = await model.generateContent(botPrompt);
-        const raw_response = result.response;
-        response = raw_response.text();
-      } else {
-        // Free Tier: Google Gimini
-        const googleGenAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY || "");
+        const headers = {
+          'Content-Type': 'application/json',
+          'X-API-KEY': `${process.env.MANCER_API_KEY}`
+        }
 
-        const model = googleGenAI.getGenerativeModel({ model: "gemini-pro" });
-        const result = await model.generateContent(botPrompt);
-        const raw_response = result.response;
-        response = raw_response.text();
+        let raw_response = await axios.post(`https://neuro.mancer.tech/oai/v1/chat/completions`,
+          data, { headers: headers }
+        )
+        console.log(raw_response.data.choices[0])
+        response = raw_response.data.choices[0].message.content
+      } catch (error) {
+        console.log("error while calling mancer api", error)
       }
+
       await memoryManager.writeToHistory("" + response.trim(), mindKey);
       var Readable = require("stream").Readable;
 
