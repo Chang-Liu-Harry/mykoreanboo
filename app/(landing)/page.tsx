@@ -1,12 +1,11 @@
-// import Link from 'next/link'
-import { Link } from 'next-view-transitions'
+import Link from 'next/link'
+// import { Link } from 'next-view-transitions'
 import localFont from 'next/font/local'
 import { Poppins } from 'next/font/google'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
-// TODO: Add the font to the project
 const headingFont = Poppins({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],

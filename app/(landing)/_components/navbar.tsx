@@ -1,8 +1,8 @@
 'use client'
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
-// import Link from "next/link";
-import { Link } from 'next-view-transitions'
+import Link from "next/link";
+// import { Link } from 'next-view-transitions'
 import { ModeToggle } from "@/components/theme-toggle";
 
 // change your font here...
@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <Link href="/">
           <h1 className={cn("block text-xl md:text-3xl font-bold text-primary", font.className)}>
-            mind.ai
+            future.1.b.biz
           </h1>
         </Link>
       </div>
