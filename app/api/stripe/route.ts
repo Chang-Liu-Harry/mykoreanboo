@@ -43,8 +43,8 @@ export async function GET() {
           price_data: {
             currency: "USD",
             product_data: {
-              name: "mind.ai Pro",
-              description: "Create custom AI Minds and faster models",
+              name: "AI GF Pro",
+              description: "Pro Access to AI GF",
             },
             unit_amount: 1999,
             recurring: {

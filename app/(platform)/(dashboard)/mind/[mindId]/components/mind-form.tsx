@@ -114,7 +114,7 @@ export const MindForm = ({
             <div>
               <h3 className="text-lg font-medium">General Information</h3>
               <p className="text-sm text-muted-foreground">
-                General information about this AI Mind
+                General information about this AI GF
               </p>
             </div>
             <Separator className="bg-primary/10" />
@@ -141,7 +141,7 @@ export const MindForm = ({
                     <Input disabled={isLoading} placeholder="Elon Musk" {...field} />
                   </FormControl>
                   <FormDescription>
-                    This is how your AI Mind will be named.
+                    This is how your AI GF will be named.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -157,7 +157,7 @@ export const MindForm = ({
                     <Input disabled={isLoading} placeholder="CEO & Founder of Tesla, SpaceX" {...field} />
                   </FormControl>
                   <FormDescription>
-                    Short description for your AI Mind
+                    Short description for your AI GF
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -224,7 +224,7 @@ export const MindForm = ({
                   <Textarea disabled={isLoading} rows={7} className="bg-background resize-none" placeholder={SEED_CHAT} {...field} />
                 </FormControl>
                 <FormDescription>
-                  Write couple of examples of a human chatting with your AI mind, write expected answers.
+                  Write couple of examples of a human chatting with your AI GF, write expected answers.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -232,7 +232,7 @@ export const MindForm = ({
           />
           <div className="w-full flex justify-center">
             <Button size="lg" disabled={isLoading}>
-              {initialData ? "Edit your mind" : "Create your mind"}
+              {initialData ? "Comfirm Changes of your GF" : "Create your GF"}
               <Wand2 className="w-4 h-4 ml-2" />
             </Button>
           </div>

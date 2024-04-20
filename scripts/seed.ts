@@ -2,18 +2,15 @@ const { PrismaClient } = require('@prisma/client')
 
 const db = new PrismaClient()
 
-
 async function main() {
   try {
     await db.category.createMany({
       data: [
-        { name: 'Philosophy' },
-        { name: 'Scientists' },
-        { name: 'Enterpreneurs' },
-        { name: 'Musicians' },
-        { name: 'Sports' },
-        { name: 'Famous People' },
-        { name: 'Games' },
+        { name: 'Anime' },
+        { name: 'Asain' },
+        { name: 'Blonde' },
+        { name: 'Latino' },
+        { name: 'Japanese' },
       ]
     })
 

@@ -9,8 +9,8 @@ import { ProModal } from "@/components/pro-modal";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AI Mind",
-  description: "Talk with great minds",
+  title: "AI GF",
+  description: "xxxxxxxxx",
 };
 
 export default function RootLayout({

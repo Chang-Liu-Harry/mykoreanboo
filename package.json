@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:turbo": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -45,7 +46,6 @@
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
     "react-spinners": "^0.13.8",
-    "replicate": "^0.27.1",
     "stripe": "^14.22.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",

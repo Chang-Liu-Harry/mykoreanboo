@@ -14,31 +14,16 @@ import axios from "axios";
 import { decode } from 'base64-arraybuffer'
 import { createClient } from '@supabase/supabase-js'
 
-
 // Create a single supabase client for interacting with your database
 
 dotenv.config({ path: `.env` });
 
 const generateImage = async (prompt: string) => {
   const supabase = createClient(`${process.env.SUPABASE_URL}`, `${process.env.SUPABASE_SERVICE_ROLE_SECRET}`)
-  // // TODO use
-  // const supabase = createClient('https://cvwbhtpmuxrfpkzmozzh.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2d2JodHBtdXhyZnBrem1venpoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxMjI3ODMzNywiZXhwIjoyMDI3ODU0MzM3fQ.quho5_VD_NrdYEPjKmdmPfKT0lO9BdT2IcrmTQQZ23Q')
-
   console.log('current prompt inside generateImage func', prompt)
-  // validate supabase connectivity
-  // const { data, error } = await supabase
-  //   .storage
-  //   .listBuckets()
-
-  // if (error) {
-  //   console.log('error', error)
-  //   return undefined
-  // }
-  // console.log(data)
-
-  // return
-
-
+  // throw new Error("Image generation not enabled")
+  console.log("Image generation not enabled")
+  return null
   try {
     const response = await axios.post(`https://api.runpod.ai/v2/${process.env.RUNPOD_API_ID}/runsync`, {
       input: {
@@ -71,7 +56,6 @@ const generateImage = async (prompt: string) => {
 
     // return image
     return publicPath
-
 
   } catch (error) {
     console.error('Error:', error);
@@ -221,8 +205,11 @@ export async function POST(
       }
     } else {
       const botPrompt =
-        `
-        ONLY generate plain sentences without prefix of who is speaking. DO NOT use "${mind.name}:" prefix. DO NOT use "${mind.name}:" prefix. DO NOT use "${mind.name}:" prefix. ${mind.instructions}
+        `ONLY generate plain sentences without prefix of who is speaking. 
+        DO NOT use "${mind.name}:" prefix. 
+        DO NOT use "${mind.name}:" prefix. 
+        DO NOT use "${mind.name}:" prefix. 
+        ${mind.instructions}
         Please answer like a real celebraties you're acting. 
         If you could, use emojis like *smile* to express emotions.
         If you could, use emojis like *smile* to express emotions.
