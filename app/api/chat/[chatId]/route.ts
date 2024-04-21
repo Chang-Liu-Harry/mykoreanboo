@@ -123,6 +123,39 @@ export async function POST(
       return new NextResponse("Mind not found", { status: 404 });
     }
 
+    const numberOfChat = await prismadb.message.count({
+      where: {
+        userId: user.id
+      }
+    })
+
+    console.log(`current user has ${numberOfChat} messages`)
+    if (numberOfChat >= 4 && !isPro) {
+      var Readable = require("stream").Readable;
+      let s = new Readable();
+      let response = "Want More? Just Subscribe to Pro! Non-paid user can only send 2 messages"
+      s.push(response);
+      s.push(null);
+
+      await prismadb.mind.update({
+        where: {
+          id: params.chatId
+        },
+        data: {
+          messages: {
+            create: {
+              content: response.trim(),
+              role: "system",
+              type: "text",
+              userId: user.id,
+            },
+          },
+        }
+      });
+
+      return new StreamingTextResponse(s);
+    }
+
 
     // Check user requested type
     let type = prompt.includes("send") ? "image" : "text";

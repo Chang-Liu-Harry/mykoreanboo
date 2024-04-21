@@ -9,7 +9,7 @@ import { ChatForm } from "@/components/chat-form";
 import { ChatHeader } from "@/components/chat-header";
 import { ChatMessages } from "@/components/chat-messages";
 import { ChatMessageProps } from "@/components/chat-message";
-
+import { useProModal } from "@/hooks/use-pro-modal";
 interface ChatClientProps {
   mind: Mind & {
     messages: Message[];
@@ -25,6 +25,8 @@ export const ChatClient = ({
   isPro
 }: ChatClientProps) => {
   const router = useRouter();
+  const proModal = useProModal()
+
   const [messages, setMessages] = useState<ChatMessageProps[]>(mind.messages);
   const {
     input,
@@ -36,7 +38,6 @@ export const ChatClient = ({
     api: `/api/chat/${mind.id}`,
     onFinish(_prompt, completion) {
       // TODO: ensure a better check flow
-      let type = input.includes("send") ? "image" : "text";
       const systemMessage: ChatMessageProps = {
         role: "system",
         type: "text",

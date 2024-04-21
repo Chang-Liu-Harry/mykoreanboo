@@ -11,12 +11,9 @@ export default authMiddleware({
   ],
 
   afterAuth(auth, req) {
-    console.log("enter afterAuth", req.url)
     if (auth.userId && auth.isPublicRoute) {
       let path = '/dashboard'
-      console.log('path', path)
       const dashboard = new URL(path, req.url)
-      console.log('dashboard', dashboard)
       return NextResponse.redirect(dashboard)
     }
 
