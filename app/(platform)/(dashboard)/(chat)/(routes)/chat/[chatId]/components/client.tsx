@@ -52,6 +52,9 @@ export const ChatClient = ({
   });
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    if (!isPro && messages.length >= 4) {
+      proModal.onOpen()
+    }
     const userMessage: ChatMessageProps = {
       role: "user",
       // User message type should always be text

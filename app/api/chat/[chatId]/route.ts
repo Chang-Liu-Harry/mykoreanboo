@@ -13,6 +13,7 @@ import axios from "axios";
 
 import { decode } from 'base64-arraybuffer'
 import { createClient } from '@supabase/supabase-js'
+import { clerkClient } from "@clerk/nextjs";
 
 // Create a single supabase client for interacting with your database
 
@@ -102,6 +103,8 @@ export async function POST(
     }
     console.log('isPro from server side', isPro)
 
+
+
     const mind = await prismadb.mind.update({
       where: {
         id: params.chatId
@@ -133,7 +136,8 @@ export async function POST(
     if (numberOfChat >= 4 && !isPro) {
       var Readable = require("stream").Readable;
       let s = new Readable();
-      let response = "Want More? Just Subscribe to Pro! Non-paid user can only send 2 messages"
+      // TODO: non-paid user notification
+      let response = "Oops, my dear. I got something else to do now"
       s.push(response);
       s.push(null);
 
@@ -154,6 +158,20 @@ export async function POST(
       });
 
       return new StreamingTextResponse(s);
+    }
+
+    // Super User Check on Clerk
+    if (numberOfChat >= 4 && isPro) {
+      const fullUserData = await clerkClient.users.getUser(user.id)
+      console.log(fullUserData)
+      if (!fullUserData.privateMetadata.superUser) {
+        var Readable = require("stream").Readable;
+        let s = new Readable();
+        let response = "Only Super User can send messages Now"
+        s.push(response);
+        s.push(null);
+        return new StreamingTextResponse(s);
+      }
     }
 
 
