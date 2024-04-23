@@ -97,8 +97,8 @@ const generateTextMancer = async (prompt: string) => {
 
 const generateTextLlama = async (prompt: string) => {
   const data = {
-    // "model": "wangtcalex/mythomax-13b",
-    "model": "llama2-uncensored",
+    "model": "wangtcalex/mythomax-13b",
+    // "model": "llama2-uncensored",
     "prompt": prompt,
     "stream": false
   }
