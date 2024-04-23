@@ -63,7 +63,6 @@ export const ChatClient = ({
     };
 
     setMessages((current) => [...current, userMessage]);
-    console.log('event', e)
     handleSubmit(e);
   }
 

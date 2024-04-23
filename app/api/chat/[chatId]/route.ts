@@ -243,9 +243,8 @@ export async function POST(
 
     // TODO: check memory.ts
     let relevantHistory = "";
-    console.log("mind", mind)
+
     if (type == "image") {
-      // call openai image generation api, get the result, which should be base64 and stream it out.
       if (!isPro) {
         let s = new Readable();
         s.push("Only paid user could generate images")
@@ -254,48 +253,51 @@ export async function POST(
       }
       const image: any = await generateImage(prompt)
       let s = new Readable();
-
-      if (image) {
-        s.push(image);
-        s.push(null);
-        await prismadb.mind.update({
-          where: {
-            id: params.chatId
-          },
-          data: {
-            messages: {
-              create: {
-                content: image,
-                role: "system",
-                type: "image",
-                userId: user.id,
-              },
-            },
-          }
-        });
-        return new StreamingTextResponse(s);
-      }
-      else {
-        let errorContent = "Error when generating images"
-        s.push(errorContent);
-        s.push(null);
-        await prismadb.mind.update({
-          where: {
-            id: params.chatId
-          },
-          data: {
-            messages: {
-              create: {
-                content: errorContent,
-                role: "system",
-                type: "text",
-                userId: user.id,
-              },
-            },
-          }
-        });
-        return new StreamingTextResponse(s);
-      }
+      // !!! Image Generation Not Enabled
+      s.push("Image Generation Not Enabled")
+      s.push(null)
+      return new StreamingTextResponse(s);
+      // if (image) {
+      //   s.push(image);
+      //   s.push(null);
+      //   await prismadb.mind.update({
+      //     where: {
+      //       id: params.chatId
+      //     },
+      //     data: {
+      //       messages: {
+      //         create: {
+      //           content: image,
+      //           role: "system",
+      //           type: "image",
+      //           userId: user.id,
+      //         },
+      //       },
+      //     }
+      //   });
+      //   return new StreamingTextResponse(s);
+      // }
+      // else {
+      //   let errorContent = "Error when generating images"
+      //   s.push(errorContent);
+      //   s.push(null);
+      //   await prismadb.mind.update({
+      //     where: {
+      //       id: params.chatId
+      //     },
+      //     data: {
+      //       messages: {
+      //         create: {
+      //           content: errorContent,
+      //           role: "system",
+      //           type: "text",
+      //           userId: user.id,
+      //         },
+      //       },
+      //     }
+      //   });
+      //   return new StreamingTextResponse(s);
+      // }
     } else {
       const botPrompt =
         `
@@ -310,7 +312,6 @@ export async function POST(
       console.log('bot prompt', botPrompt)
       let response = ""
       try {
-        // response = await generateTextMancer(prompt)
         response = await generateTextLlama(prompt)
       } catch (error) {
         console.log("error while calling mancer api", error)

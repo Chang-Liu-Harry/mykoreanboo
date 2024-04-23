@@ -21,7 +21,7 @@ const ChatIdPage = async ({
   }
 
   const isPro = await checkSubscription();
-  console.log('isPro?', isPro)
+  // console.log('isPro?', isPro)
 
   const mind = await prismadb.mind.findUnique({
     where: {

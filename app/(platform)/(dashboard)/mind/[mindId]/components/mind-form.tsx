@@ -81,7 +81,6 @@ export const MindForm = ({
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values)
     try {
       if (initialData) {
         await axios.patch(`/api/mind/${initialData.id}`, values);
