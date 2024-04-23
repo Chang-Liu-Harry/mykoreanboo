@@ -1,11 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
-// import { Link } from 'next-view-transitions'
 import { Mind } from "@prisma/client"
 import { MessagesSquare } from "lucide-react";
 
 import { Card, CardFooter, CardHeader } from "@/components/ui/card"
-import exp from "constants";
 
 interface MindProps {
   data: (Mind & {

@@ -2,7 +2,6 @@
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
-// import { Link } from 'next-view-transitions'
 import { ModeToggle } from "@/components/theme-toggle";
 
 // change your font here...
