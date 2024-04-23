@@ -114,6 +114,7 @@ export async function POST(
   request: Request,
   { params }: { params: { chatId: string } }
 ) {
+  var Readable = require("stream").Readable;
   try {
     const req = await request.json()
     const prompt = req.prompt;
@@ -177,7 +178,6 @@ export async function POST(
 
     console.log(`current user has ${numberOfChat} messages`)
     if (numberOfChat >= 4 && !isPro) {
-      var Readable = require("stream").Readable;
       let s = new Readable();
       // TODO: non-paid user notification
       let response = "Oops, my dear. I got something else to do now"
@@ -209,7 +209,6 @@ export async function POST(
       const fullUserData = await clerkClient.users.getUser(user.id)
       console.log(fullUserData)
       if (!fullUserData.privateMetadata.superUser) {
-        var Readable = require("stream").Readable;
         let s = new Readable();
         let response = "Only Super User can send messages Now"
         s.push(response);
@@ -248,14 +247,12 @@ export async function POST(
     if (type == "image") {
       // call openai image generation api, get the result, which should be base64 and stream it out.
       if (!isPro) {
-        var Readable = require("stream").Readable;
         let s = new Readable();
         s.push("Only paid user could generate images")
         s.push(null)
         return new StreamingTextResponse(s);
       }
       const image: any = await generateImage(prompt)
-      var Readable = require("stream").Readable;
       let s = new Readable();
 
       if (image) {
@@ -321,7 +318,6 @@ export async function POST(
 
       await memoryManager.writeToHistory("" + response.trim(), mindKey);
 
-      var Readable = require("stream").Readable;
       let s = new Readable();
       s.push(response);
       s.push(null);
