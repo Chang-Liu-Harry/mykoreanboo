@@ -29,7 +29,7 @@ const Navbar = ({
         <MobileSidebar isPro={isPro} />
         <Link href="/">
           <h1 className={cn("hidden md:block text-xl md:text-3xl font-bold text-primary", font.className)}>
-            future.1.b.biz
+            FlirtAI.Chat
           </h1>
         </Link>
       </div>

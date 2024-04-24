@@ -27,7 +27,7 @@ const Minds = ({
             alt="Empty"
           />
         </div>
-        <p className="text-sm text-muted-foreground">No ai minds found.</p>
+        <p className="text-sm text-muted-foreground">No characters found.</p>
       </div>
     )
   }

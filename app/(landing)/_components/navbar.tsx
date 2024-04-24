@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <Link href="/">
           <h1 className={cn("block text-xl md:text-3xl font-bold text-primary", font.className)}>
-            future.1.b.biz
+            FlirtAI.Chat
           </h1>
         </Link>
       </div>
