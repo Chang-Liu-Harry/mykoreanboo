@@ -43,10 +43,10 @@ export async function GET() {
           price_data: {
             currency: "USD",
             product_data: {
-              name: "AI GF Pro",
-              description: "Pro Access to AI GF",
+              name: "FlirtAI.Chat Pro",
+              description: "Pro Access to FlirtAI.Chat",
             },
-            unit_amount: 1999,
+            unit_amount: 1499,
             recurring: {
               interval: "month"
             }
