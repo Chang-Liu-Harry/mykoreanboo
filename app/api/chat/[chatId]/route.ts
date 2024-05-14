@@ -257,51 +257,52 @@ export async function POST(
       }
       const image: any = await generateImage(prompt)
       let s = new Readable();
-      // !!! Image Generation Not Enabled
-      s.push("Image Generation Not Enabled")
-      s.push(null)
-      return new StreamingTextResponse(s);
-      // if (image) {
-      //   s.push(image);
-      //   s.push(null);
-      //   await prismadb.mind.update({
-      //     where: {
-      //       id: params.chatId
-      //     },
-      //     data: {
-      //       messages: {
-      //         create: {
-      //           content: image,
-      //           role: "system",
-      //           type: "image",
-      //           userId: user.id,
-      //         },
-      //       },
-      //     }
-      //   });
-      //   return new StreamingTextResponse(s);
-      // }
-      // else {
-      //   let errorContent = "Error when generating images"
-      //   s.push(errorContent);
-      //   s.push(null);
-      //   await prismadb.mind.update({
-      //     where: {
-      //       id: params.chatId
-      //     },
-      //     data: {
-      //       messages: {
-      //         create: {
-      //           content: errorContent,
-      //           role: "system",
-      //           type: "text",
-      //           userId: user.id,
-      //         },
-      //       },
-      //     }
-      //   });
-      //   return new StreamingTextResponse(s);
-      // }
+      // // !!! Image Generation Not Enabled
+      // s.push("Image Generation Not Enabled")
+      // s.push(null)
+      // return new StreamingTextResponse(s);
+
+      if (image) {
+        s.push(image);
+        s.push(null);
+        await prismadb.mind.update({
+          where: {
+            id: params.chatId
+          },
+          data: {
+            messages: {
+              create: {
+                content: image,
+                role: "system",
+                type: "image",
+                userId: user.id,
+              },
+            },
+          }
+        });
+        return new StreamingTextResponse(s);
+      }
+      else {
+        let errorContent = "Error when generating images"
+        s.push(errorContent);
+        s.push(null);
+        await prismadb.mind.update({
+          where: {
+            id: params.chatId
+          },
+          data: {
+            messages: {
+              create: {
+                content: errorContent,
+                role: "system",
+                type: "text",
+                userId: user.id,
+              },
+            },
+          }
+        });
+        return new StreamingTextResponse(s);
+      }
     } else {
       const botPrompt =
         `
