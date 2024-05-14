@@ -25,7 +25,7 @@ const generateImage = async (prompt: string) => {
   const supabase = createClient(`${process.env.SUPABASE_URL}`, `${process.env.SUPABASE_SERVICE_ROLE_SECRET}`)
   console.log('current prompt inside generateImage func', prompt)
   // throw new Error("Image generation not enabled")
-  console.log("Image generation not enabled")
+  
   // !!! SUSPENDED
   //return null
   try {
@@ -39,6 +39,8 @@ const generateImage = async (prompt: string) => {
         'Authorization': `Bearer ${process.env.SD_RUNPOD_API_KEY}`
       }
     })
+
+    console.log("Posted to Runpod")
 
     const image = response.data.output.images[0]
     console.log(image.length)
@@ -86,7 +88,7 @@ const generateTextMancer = async (prompt: string) => {
     'Content-Type': 'application/json',
     'X-API-KEY': `${process.env.MANCER_API_KEY}`
   }
-
+  console.log("Sending to Mancer")
   let raw_response = await axios.post(`https://neuro.mancer.tech/oai/v1/chat/completions`,
     data, { headers: headers }
   )
