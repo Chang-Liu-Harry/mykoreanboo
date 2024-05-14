@@ -14,6 +14,9 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.50.1)
+  '@opentelemetry/api':
+    specifier: ^0.19.0
+    version: 0.19.0
   '@pinecone-database/pinecone':
     specifier: ^0.1.6
     version: 0.1.6
@@ -79,7 +82,7 @@ dependencies:
     version: 5.0.7
   next:
     specifier: 14.1.0
-    version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
+    version: 14.1.0(@opentelemetry/api@0.19.0)(react-dom@18.2.0)(react@18.2.0)
   next-cloudinary:
     specifier: ^6.0.1
     version: 6.0.1(next@14.1.0)(react@18.2.0)
@@ -269,7 +272,7 @@ packages:
       '@clerk/clerk-sdk-node': 4.13.7(react@18.2.0)
       '@clerk/shared': 1.3.1(react@18.2.0)
       '@clerk/types': 3.60.0
-      next: 14.1.0(react-dom@18.2.0)(react@18.2.0)
+      next: 14.1.0(@opentelemetry/api@0.19.0)(react-dom@18.2.0)(react@18.2.0)
       path-to-regexp: 6.2.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -593,6 +596,11 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.0
+
+  /@opentelemetry/api@0.19.0:
+    resolution: {integrity: sha512-v+6ZPQZMKKRVCwLMdjfkrUhBNIQMPrbyMo2R07LdLpCKmq3KlEeyua2LsI19WgTWIj9R9QgqfD8EcUgyxUiw+A==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /@peculiar/asn1-schema@2.3.8:
     resolution: {integrity: sha512-ULB1XqHKx1WBU/tTFIA+uARuRoBVZ4pNdOA878RDrRbBfBGcSzi5HBkdScC6ZbHn8z7L8gmKCgPC1LHRrP46tA==}
@@ -3768,7 +3776,7 @@ packages:
       '@cloudinary-util/url-loader': 5.0.0
       '@cloudinary-util/util': 3.0.0
       '@tsconfig/recommended': 1.0.3
-      next: 14.1.0(react-dom@18.2.0)(react@18.2.0)
+      next: 14.1.0(@opentelemetry/api@0.19.0)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -3779,12 +3787,12 @@ packages:
       react: '*'
       react-dom: '*'
     dependencies:
-      next: 14.1.0(react-dom@18.2.0)(react@18.2.0)
+      next: 14.1.0(@opentelemetry/api@0.19.0)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /next@14.1.0(react-dom@18.2.0)(react@18.2.0):
+  /next@14.1.0(@opentelemetry/api@0.19.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-wlzrsbfeSU48YQBjZhDzOwhWhGsy+uQycR8bHAOt1LY1bn3zZEcDyHQOEoN3aWzQ8LHCAJ1nqrWCc9XF2+O45Q==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -3800,6 +3808,7 @@ packages:
         optional: true
     dependencies:
       '@next/env': 14.1.0
+      '@opentelemetry/api': 0.19.0
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
       caniuse-lite: 1.0.30001581

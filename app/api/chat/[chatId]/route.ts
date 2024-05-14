@@ -27,16 +27,16 @@ const generateImage = async (prompt: string) => {
   // throw new Error("Image generation not enabled")
   console.log("Image generation not enabled")
   // !!! SUSPENDED
-  return null
+  //return null
   try {
-    const response = await axios.post(`https://api.runpod.ai/v2/${process.env.RUNPOD_API_ID}/runsync`, {
+    const response = await axios.post(`https://api.runpod.ai/v2/${process.env.SD_RUNPOD_API_ID}/runsync`, {
       input: {
         prompt: prompt
       }
     }, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.RUNPOD_API_KEY}`
+        'Authorization': `Bearer ${process.env.SD_RUNPOD_API_KEY}`
       }
     })
 
@@ -66,7 +66,7 @@ const generateImage = async (prompt: string) => {
     return undefined;
   }
 }
-
+// Text Generation
 const generateTextMancer = async (prompt: string) => {
 
   let response = "";
@@ -312,7 +312,7 @@ export async function POST(
       console.log('bot prompt', botPrompt)
       let response = ""
       try {
-        response = await generateTextLlama(prompt)
+        response = await generateTextMancer(prompt)
       } catch (error) {
         console.log("error while calling mancer api", error)
       }

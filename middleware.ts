@@ -22,6 +22,7 @@ export default authMiddleware({
         returnBackUrl: req.url,
       })
     }
+    console.log(`User ID: ${auth.userId}, URL: ${req.url}`);
   }
 });
 

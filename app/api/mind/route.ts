@@ -19,7 +19,6 @@ export async function POST(req: Request) {
     };
 
     const isPro = await checkSubscription();
-
     if (!isPro) {
       return new NextResponse("Pro subscription required", { status: 403 });
     }
