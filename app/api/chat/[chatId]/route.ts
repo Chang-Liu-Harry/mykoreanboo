@@ -205,17 +205,17 @@ export async function POST(
 
     // Super User Check on Clerk
     // This is the temporary fix BEFORE stripe is activated
-    if (numberOfChat >= 4 && isPro) {
-      const fullUserData = await clerkClient.users.getUser(user.id)
-      console.log(fullUserData)
-      if (!fullUserData.privateMetadata.superUser) {
-        let s = new Readable();
-        let response = "Only Super User can send messages Now"
-        s.push(response);
-        s.push(null);
-        return new StreamingTextResponse(s);
-      }
-    }
+    // if (numberOfChat >= 4 && isPro) {
+    //   const fullUserData = await clerkClient.users.getUser(user.id)
+    //   console.log(fullUserData)
+    //   if (!fullUserData.privateMetadata.superUser) {
+    //     let s = new Readable();
+    //     let response = "Only Super User can send messages Now"
+    //     s.push(response);
+    //     s.push(null);
+    //     return new StreamingTextResponse(s);
+    //   }
+    // }
 
 
     // Check user requested type
