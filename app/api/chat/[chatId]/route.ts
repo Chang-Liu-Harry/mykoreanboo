@@ -80,7 +80,8 @@ const generateTextMancer = async (prompt: string) => {
         content: prompt,
       }
     ],
-    "model": "mytholite"
+    "model": "mythomax"
+    //"model": "mytholite"
     // "model": "mythomist"
   }
 
