@@ -36,8 +36,9 @@ const generateImage = async (prompt: string) => {
     }, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.SD_RUNPOD_API_KEY}`
-      }
+        'Authorization': `Bearer ${process.env.SD_RUNPOD_API_KEY}`,
+      },
+      timeout: 30000// set timeout to 30s
     })
 
     console.log("Posted to Runpod")
