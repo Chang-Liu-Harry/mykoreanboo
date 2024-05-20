@@ -333,7 +333,7 @@ export async function POST(
 
         Now reply to this:
         `
-      const combinedPrompt = botPrompt + prompt
+      const combinedPrompt = JAIL_BREAK_PROMPT + botPrompt2 + prompt
       console.log('prompt', combinedPrompt)
       let response = ""
       try {
