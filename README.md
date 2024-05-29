@@ -42,3 +42,7 @@ Cloudindary: Image hosting/store
 Upstash: Redis
 
 Replicate: run model
+
+# mykoreanboo
+code for mykoreanboo.com
+
