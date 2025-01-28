@@ -1,4 +1,7 @@
-# AI Minds Template
+# HI ALL! This is the code base for mykoreanboo.com and onepieceai.chat
+If you are looking for a good base of code for a AI companion website this project will offer you LLM, image generation, and subscription features for you.
+Feel free to turn this code into your commercial website.(Please let me know if you actually made it to have healthy revenue because that'd make me sooooo proud!)
+Contact me if you need more assitance with custom LLM/image generation.
 
 
 ## Run on your own
